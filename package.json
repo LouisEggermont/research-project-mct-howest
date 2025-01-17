@@ -10,7 +10,6 @@
     "test:accessibility": "pa11y-ci"
   },
   "dependencies": {
-    "@adobe/react-spectrum": "^3.39.0",
     "@react-aria/button": "^3.11.1",
     "@react-aria/utils": "^3.27.0",
     "@react-spectrum/provider": "^3.10.1",
