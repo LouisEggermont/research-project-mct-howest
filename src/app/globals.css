@@ -21,6 +21,14 @@
   font-family: Arial, Helvetica, sans-serif;
 } */
 
+:root {
+  --gov-magenta: #cc017a;
+  --gov-blue: #32aec7;
+  --gov-gray: #f6f5e5;
+  --gov-yellow: #ffed00;
+  --gov-black: #3c3d3c;
+}
+
 @font-face {
   font-family: "FlandersArtSans";
   src: url("/fonts/FlandersArtSans-Regular.woff") format("woff");
@@ -53,4 +61,6 @@ body {
   /* @apply bg-white dark:bg-zinc-900;
   color-scheme: dark light; */
   font-family: "FlandersArtSans", sans-serif;
+  /* make all text black */
+  color: var(--gov-black);
 }
