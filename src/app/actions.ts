@@ -20,21 +20,21 @@ export default async function createUser(
   });
 
   // Return early if the form data is invalid
-  // if (!validatedFields.success) {
-  //   return {
-  //     errors: validatedFields.error.flatten().fieldErrors,
-  //   };
-  // }
   if (!validatedFields.success) {
-    const formattedErrors = Object.fromEntries(
-      Object.entries(validatedFields.error.flatten().fieldErrors).map(
-        ([key, value]) => [key, value[0]] // Convert arrays to single strings
-      )
-    );
-
-    console.log("Validation errors:", formattedErrors);
-    return { errors: formattedErrors };
+    return {
+      errors: validatedFields.error.flatten().fieldErrors,
+    };
   }
+  // if (!validatedFields.success) {
+  //   const formattedErrors = Object.fromEntries(
+  //     Object.entries(validatedFields.error.flatten().fieldErrors).map(
+  //       ([key, value]) => [key, value[0]] // Convert arrays to single strings
+  //     )
+  //   );
+
+  //   console.log("Validation errors:", formattedErrors);
+  //   return { errors: formattedErrors };
+  // }
 
   // Mutate data
 }

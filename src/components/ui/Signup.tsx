@@ -7,11 +7,6 @@ import { Form } from "../aria/Form";
 import { TextField } from "../aria/TextField";
 import { Button } from "../aria/Button";
 
-// const initialState = {
-//   errors: {}, // Ensure it starts as an empty object
-//   message: "",
-// };
-
 export function Signup() {
   const initialState = {
     errors: {}, // Ensure it starts as an empty object
