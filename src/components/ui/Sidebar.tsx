@@ -1,33 +1,37 @@
 "use client";
-import { Button } from "@/components/aria/Button"; // Adjust the import path as necessary
+import React from "react";
+import { useFormContext } from "@/context/FormContext";
+import { Button } from "@/components/aria/Button";
+import { steps } from "@/config/steps";
 
-const steps = [
-  { id: 1, title: "Persoonlijke Gegevens" },
-  { id: 2, title: "Contactgegevens" },
-  { id: 3, title: "Identificatie" },
-];
+export default function Sidebar() {
+  const { currentStep, setStep, totalSteps } = useFormContext();
 
-interface SidebarProps {
-  currentStep: number;
-  setStep: (step: number) => void;
-}
-
-export default function Sidebar({ currentStep, setStep }: SidebarProps) {
   return (
-    <aside className="w-64 h-screen bg-gray-200 p-6">
-      <h2 className="text-lg font-semibold mb-4">Navigatie</h2>
-      <nav className="space-y-2">
-        {steps.map((step) => (
-          <Button
-            key={step.id}
-            onPress={() => setStep(step.id)}
-            variant={currentStep === step.id ? "primary" : "secondary"}
-            className="w-full text-left p-2 rounded-md"
-          >
-            {step.title}
-          </Button>
+    <aside className="w-64 p-4 bg-gray-100 dark:bg-gray-800">
+      <ul className="space-y-2">
+        {steps.map((step, index) => (
+          <li key={step.key}>
+            {/* <button
+              onClick={() => setStep(index + 1)}
+              className={`w-full text-left p-2 rounded-lg ${
+                currentStep === index + 1
+                  ? "bg-blue-500 text-white"
+                  : "bg-transparent"
+              }`}
+            >
+              {index + 1}. {step.title}
+            </button> */}
+            <Button
+              onPress={() => setStep(index + 1)}
+              variant={currentStep === index + 1 ? "primary" : "secondary"}
+              className="w-full text-left p-2 rounded-lg border-0"
+            >
+              {index + 1}. {step.title}
+            </Button>
+          </li>
         ))}
-      </nav>
+      </ul>
     </aside>
   );
 }

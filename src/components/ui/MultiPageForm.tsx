@@ -1,61 +1,32 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
+import { FormProvider, useFormContext } from "@/context/FormContext";
 import PersonalData from "./PersonalData";
 import ContactDetails from "./ContactDetails";
 import Identification from "./Identification";
 import Sidebar from "./Sidebar";
 
 export default function MultiPageForm() {
-  const [currentStep, setStep] = useState(1);
-  const [formData, setFormData] = useState({
-    officialFirstNames: "",
-    lastName: "",
-    gender: "",
-    nationality: "",
-    birthDay: "",
-    birthMonth: "",
-    birthYear: "",
-    street: "",
-    postalCode: "",
-    city: "",
-    phone: "",
-    email: "",
-    dossierNumber: "",
-    nationalID: "",
-  });
+  return (
+    <FormProvider>
+      <FormContainer />
+    </FormProvider>
+  );
+}
 
-  const handleChange = (key: string, value: string) => {
-    setFormData((prev) => ({ ...prev, [key]: value }));
-  };
+function FormContainer() {
+  const { currentStep } = useFormContext();
 
   return (
     <div className="flex">
       {/* Sidebar Navigation */}
-      <Sidebar currentStep={currentStep} setStep={setStep} />
+      <Sidebar />
 
       {/* Main Content */}
       <main className="flex-1 p-6">
-        {currentStep === 1 && (
-          <PersonalData
-            formData={formData}
-            handleChange={handleChange}
-            setStep={setStep}
-          />
-        )}
-        {currentStep === 2 && (
-          <ContactDetails
-            formData={formData}
-            handleChange={handleChange}
-            setStep={setStep}
-          />
-        )}
-        {currentStep === 3 && (
-          <Identification
-            formData={formData}
-            handleChange={handleChange}
-            setStep={setStep}
-          />
-        )}
+        {currentStep === 1 && <PersonalData />}
+        {currentStep === 2 && <ContactDetails />}
+        {currentStep === 3 && <Identification />}
       </main>
     </div>
   );

@@ -15,7 +15,7 @@ export const focusRing = tv({
 
 // focus when focused by mouse or keyboard
 // export const focusRing = tv({
-//   base: "outline-none focus:ring-2 focus:ring-blue-500", // ✅ Always show focus
+//   base: "outline-none focus:ring-2 focus:ring-red-500", // ✅ Always show focus
 //   variants: {
 //     isFocusWithin: {
 //       false: "",
