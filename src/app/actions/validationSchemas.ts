@@ -12,8 +12,8 @@ export const identificationSchema = z.object({
 
 // ✅ Contact Details Validation
 export const contactDetailsSchema = z.object({
-  phone: z.string().min(10, "Telefoonnummer moet minstens 10 tekens bevatten."),
-  email: z.string().email("Ongeldig e-mailadres."),
+  phone: z.string().min(1, "Telefoonnummer moet minstens 1 tekens bevatten."),
+  email: z.string().min(1, "Ongeldig e-mailadres."),
 });
 
 // ✅ Personal Data Validation

@@ -14,10 +14,11 @@ export function Signup() {
   };
 
   const [state, formAction] = useActionState(createUser, initialState);
+  console.log(state);
 
   return (
     <Form id="signup-form" action={formAction} validationErrors={state?.errors}>
-      <TextField label="Email" name="email" type="text" isRequired />
+      <TextField label="Email" name="email" type="text" />
       <TextField label="Phone" name="phone" type="text" />
 
       <Button

@@ -6,7 +6,7 @@ export default function ContactDetails() {
   return (
     <FormStep>
       <TextField label="Telefoonnummer" name="phone" />
-      <TextField label="E-mailadres" name="email" type="email" />
+      <TextField label="E-mailadres" name="email" />
     </FormStep>
   );
 }

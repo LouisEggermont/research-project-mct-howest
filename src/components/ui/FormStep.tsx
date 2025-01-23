@@ -1,6 +1,5 @@
 "use client";
-
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useFormContext } from "@/context/FormContext";
 import { useActionState } from "react";
 import { Button } from "@/components/aria/Button";
@@ -15,28 +14,37 @@ export default function FormStep({ children }: FormStepProps) {
   const { stepTitle, stepKey, currentStep, totalSteps, setStep } =
     useFormContext();
   const headingRef = useRef<HTMLHeadingElement>(null);
-
-  useEffect(() => {
-    if (headingRef.current) {
-      headingRef.current.focus();
-    }
-  }, [currentStep]);
+  const prevIsPending = useRef(false);
 
   // ✅ Initialize validation state
-  const [errorState, formAction] = useActionState(validateForm, { errors: {} });
-  const [validationErrors, setValidationErrors] = useState({});
+  const [errorState, formAction, isPending] = useActionState(validateForm, {
+    errors: {},
+  });
 
   useEffect(() => {
-    setValidationErrors({ ...errorState?.errors }); // Create a new object reference
-  }, [errorState?.errors]);
+    // Detect when submission completes (isPending flips from true to false)
+    if (prevIsPending.current && !isPending) {
+      // Only progress if there are no errors
+      if (
+        Object.keys(errorState.errors).length === 0 &&
+        currentStep < totalSteps
+      ) {
+        setStep(currentStep + 1);
+      }
+    }
+    prevIsPending.current = isPending;
+  }, [isPending, errorState.errors, currentStep, totalSteps, setStep]);
+
+  useEffect(() => {
+    headingRef.current?.focus();
+  }, [currentStep]);
 
   return (
     <Form
+      id={`step-form-${stepKey}`}
       action={formAction}
-      validationErrors={validationErrors}
-      className="space-y-6"
+      validationErrors={errorState.errors}
     >
-      {/* Step Title */}
       <h2
         ref={headingRef}
         tabIndex={-1}
@@ -45,21 +53,23 @@ export default function FormStep({ children }: FormStepProps) {
         {stepTitle}
       </h2>
 
-      {/* Hidden Input to Track Step Key */}
       <input type="hidden" name="step" value={stepKey} />
 
-      {/* Step Content */}
       <div>{children}</div>
 
-      {/* Navigation Buttons */}
       <div className="flex gap-2">
         {currentStep > 1 && (
           <Button onPress={() => setStep(currentStep - 1)}>Vorige</Button>
         )}
+
         {currentStep < totalSteps ? (
-          <Button onPress={() => setStep(currentStep + 1)}>Volgende</Button>
+          <Button type="submit" isDisabled={isPending}>
+            {isPending ? "Controleren..." : "Volgende"}
+          </Button>
         ) : (
-          <Button type="submit">Verzenden</Button>
+          <Button type="submit" isDisabled={isPending}>
+            {isPending ? "Verzenden..." : "Verzenden"}
+          </Button>
         )}
       </div>
     </Form>
