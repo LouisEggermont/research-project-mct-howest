@@ -3,11 +3,8 @@
 import { z } from "zod";
 
 const schema = z.object({
-  email: z
-    .string({
-      invalid_type_error: "Invalid Email",
-    })
-    .nonempty("Email cannot be empty"),
+  email: z.string().nonempty("Email cannot be emptyyyy"),
+  phone: z.string().nonempty("Phone number must be at least 10 characters."),
 });
 
 export default async function createUser(

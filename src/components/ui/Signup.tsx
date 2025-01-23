@@ -1,31 +1,48 @@
 "use client";
 
+import { startTransition } from "react";
 import { useActionState } from "react";
 import createUser from "@/app/actions";
-import { useEffect, useState } from "react";
 import { Form } from "../aria/Form";
 import { TextField } from "../aria/TextField";
 import { Button } from "../aria/Button";
 
 export function Signup() {
   const initialState = {
-    errors: {}, // Ensure it starts as an empty object
+    errors: {},
     message: "",
   };
 
   const [state, formAction] = useActionState(createUser, initialState);
-  const [validationErrors, setValidationErrors] = useState({});
-
-  // Force re-render when state.errors updates
-  useEffect(() => {
-    setValidationErrors({ ...state?.errors }); // Create a new object reference
-  }, [state?.errors]);
 
   return (
-    <Form action={formAction} validationErrors={validationErrors}>
-      <TextField label="Email" name="email" type="text" />
-      {/* <p aria-live="polite">{state?.errors?.email}</p> */}
-      <Button type="submit">Sign up</Button>
+    <Form id="signup-form" action={formAction} validationErrors={state?.errors}>
+      <TextField label="Email" name="email" type="text" isRequired />
+      <TextField label="Phone" name="phone" type="text" />
+
+      <Button
+        type="button"
+        onPress={async () => {
+          const formElement = document.getElementById(
+            "signup-form"
+          ) as HTMLFormElement;
+          if (!formElement) return;
+
+          const formData = new FormData(formElement);
+
+          // check for client-side validation
+          if (!formElement.checkValidity()) {
+            formElement.reportValidity();
+            return;
+          }
+          // check for server-side validation if client-side validation passes
+          startTransition(() => {
+            formAction(formData);
+          });
+        }}
+      >
+        Sign up
+      </Button>
     </Form>
   );
 }
