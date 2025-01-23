@@ -4,6 +4,7 @@ import { steps } from "@/config/steps"; // Import step configuration
 
 interface FormContextType {
   currentStep: number;
+  stepKey: string;
   stepTitle: string;
   totalSteps: number;
   setStep: (step: number) => void;
@@ -13,20 +14,22 @@ const FormContext = createContext<FormContextType | undefined>(undefined);
 
 export function FormProvider({ children }: { children: React.ReactNode }) {
   const [currentStep, setCurrentStep] = useState(1);
-  const totalSteps = steps.length; // Get total number of steps
+  const totalSteps = steps.length;
+
+  // Dynamically find the current step's key and title
+  const currentStepData = steps.find((s) => s.id === currentStep) || steps[0];
 
   useEffect(() => {
-    document.title = `Stap ${currentStep} van ${totalSteps}: ${
-      steps.find((s) => s.id === currentStep)?.title || ""
-    }`;
-  }, [currentStep, totalSteps]);
+    document.title = `Stap ${currentStep} van ${totalSteps}: ${currentStepData.title}`;
+  }, [currentStep, totalSteps, currentStepData.title]);
 
   return (
     <FormContext.Provider
       value={{
         currentStep,
-        stepTitle: steps.find((s) => s.id === currentStep)?.title || "",
-        totalSteps, // Expose total steps in context
+        stepKey: currentStepData.key, // ✅ Automatically determines step key
+        stepTitle: currentStepData.title,
+        totalSteps,
         setStep: setCurrentStep,
       }}
     >

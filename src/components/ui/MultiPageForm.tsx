@@ -1,33 +1,28 @@
 "use client";
+
 import React from "react";
-import { FormProvider, useFormContext } from "@/context/FormContext";
-import PersonalData from "./PersonalData";
-import ContactDetails from "./ContactDetails";
-import Identification from "./Identification";
+import { useFormContext } from "@/context/FormContext";
 import Sidebar from "./Sidebar";
+import Identification from "./Identification";
+import ContactDetails from "./ContactDetails";
+import PersonalData from "./PersonalData";
+
+const stepComponents: Record<string, React.FC> = {
+  personal: PersonalData,
+  contact: ContactDetails,
+  identification: Identification,
+};
 
 export default function MultiPageForm() {
-  return (
-    <FormProvider>
-      <FormContainer />
-    </FormProvider>
-  );
-}
-
-function FormContainer() {
-  const { currentStep } = useFormContext();
+  const { stepKey } = useFormContext(); // ✅ Removed `currentStep` since it's unused
+  const StepComponent = stepComponents[stepKey];
 
   return (
     <div className="flex">
-      {/* Sidebar Navigation */}
       <Sidebar />
-
-      {/* Main Content */}
-      <main className="flex-1 p-6">
-        {currentStep === 1 && <PersonalData />}
-        {currentStep === 2 && <ContactDetails />}
-        {currentStep === 3 && <Identification />}
-      </main>
+      <div className="flex-1 p-6">
+        {StepComponent ? <StepComponent /> : <p>Ongeldige stap</p>}
+      </div>
     </div>
   );
 }
