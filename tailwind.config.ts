@@ -3,6 +3,7 @@ import tailwindReactAria from "tailwindcss-react-aria-components";
 import tailwindAnimate from "tailwindcss-animate";
 
 const config: Config = {
+  // disable standard darkomde of tailwindcss-react-aria-components
   darkMode: "class",
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
