@@ -5,7 +5,10 @@ import { TextField } from "@/components/aria/TextField";
 import { RadioGroup, Radio } from "@/components/aria/RadioGroup";
 import FormStep from "./FormStep";
 import { NumberField } from "@/components/aria/NumberField";
-import { DateField } from "../aria/DateField";
+import { DateField } from "@/components/aria/DateField";
+import FieldSet from "@/components/ui/FieldSet";
+// import { Select, SelectItem } from "../aria/Select";
+import MyNationalitySelect from "@/components/aria/MyNationalitySelect";
 
 export default function PersonalData() {
   const [hasRepresentative, setHasRepresentative] = useState("no");
@@ -14,24 +17,36 @@ export default function PersonalData() {
   return (
     <FormStep>
       {/* Section: Personal Information */}
-      <fieldset>
-        <legend className="text-lg font-semibold">Persoonlijke Gegevens</legend>
+      <FieldSet legend="Naam">
         <TextField label="Officiële Voornamen" name="firstName" isRequired />
         <TextField label="Achternaam" name="lastName" isRequired />
+      </FieldSet>
+
+      <FieldSet legend="Adres">
         <TextField label="Straat en Huisnummer" name="street" isRequired />
         <NumberField
           label="Postcode en Gemeente"
           name="postalCode"
           isRequired
         />
+      </FieldSet>
+
+      <FieldSet legend="Contactgegevens">
         <TextField label="Telefoon- of GSM-nummer" name="phone" type="tel" />
         <TextField label="E-mailadres" name="email" type="email" />
-        <TextField label="Dossiernummer" name="dossierNumber" />
+      </FieldSet>
+
+      <FieldSet legend="Identificatie">
         <DateField label="Geboortedatum" name="birthDate" isRequired />
         <TextField label="Geslacht" name="gender" isRequired />
-        <TextField label="Nationaliteit" name="nationality" isRequired />
+        {/* <TextField label="Nationaliteit" name="nationality" isRequired /> */}
+        {/* <Select label="Nationaliteit" name="nationality" isRequired>
+          <SelectItem textValue="Alvaan">beeeeeee</SelectItem>
+        </Select> */}
+        <MyNationalitySelect></MyNationalitySelect>
         <TextField label="Rijksregisternummer" name="nationalID" isRequired />
-      </fieldset>
+        <TextField label="Dossiernummer" name="dossierNumber" />
+      </FieldSet>
 
       {/* Section: Legal Representative */}
       <fieldset>
