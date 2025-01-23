@@ -18,9 +18,8 @@ export async function validateForm(prevState: FormState, formData: FormData) {
   const data = Object.fromEntries(formData.entries());
   const result = schema.safeParse(data);
 
-  // if (!result.success) {
-  //   return { errors: result.error.flatten().fieldErrors };
-  // }
+  await new Promise((resolve) => setTimeout(resolve, 10000)); // 2-second delay
+
   if (!result.success) {
     return {
       errors: Object.fromEntries(
