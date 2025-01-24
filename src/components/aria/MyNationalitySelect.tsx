@@ -65,18 +65,14 @@ const nationalities = [
   { id: "welsh", name: "Welsh" },
 ];
 
+// Sort nationalities alphabetically (Dutch locale)
 const sortedNationalities = [...nationalities].sort((a, b) =>
   a.name.localeCompare(b.name, "nl")
 );
 
-export default function MyNationalitySelect() {
+export default function MyNationalitySelect({ ...props }) {
   return (
-    <Select
-      label="Nationaliteit"
-      name="nationality"
-      defaultSelectedKey="belgian"
-      isRequired
-    >
+    <Select {...props}>
       {sortedNationalities.map((item) => (
         <SelectItem key={item.id} id={item.id} textValue={item.name}>
           {item.name}
