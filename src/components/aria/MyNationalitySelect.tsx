@@ -74,7 +74,7 @@ export default function MyNationalitySelect() {
     <Select
       label="Nationaliteit"
       name="nationality"
-      selectedKey="belgian"
+      defaultSelectedKey="belgian"
       isRequired
     >
       {sortedNationalities.map((item) => (

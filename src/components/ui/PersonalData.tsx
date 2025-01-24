@@ -7,8 +7,12 @@ import FormStep from "./FormStep";
 import { NumberField } from "@/components/aria/NumberField";
 import { DateField } from "@/components/aria/DateField";
 import FieldSet from "@/components/ui/FieldSet";
+import { Description, Input } from "@/components/aria/Field";
 // import { Select, SelectItem } from "../aria/Select";
 import MyNationalitySelect from "@/components/aria/MyNationalitySelect";
+import { NationalIDField } from "@/components/aria/NationalIDField";
+import InputMask from "react-input-mask-next";
+import { MaskField } from "../aria/MyMaskField";
 
 export default function PersonalData() {
   const [hasRepresentative, setHasRepresentative] = useState("no");
@@ -18,17 +22,13 @@ export default function PersonalData() {
     <FormStep>
       {/* Section: Personal Information */}
       <FieldSet legend="Naam">
-        <TextField label="Officiële Voornamen" name="firstName" isRequired />
-        <TextField label="Achternaam" name="lastName" isRequired />
+        <TextField label="Officiële Voornamen" name="firstName" />
+        <TextField label="Achternaam" name="lastName" />
       </FieldSet>
 
       <FieldSet legend="Adres">
-        <TextField label="Straat en Huisnummer" name="street" isRequired />
-        <NumberField
-          label="Postcode en Gemeente"
-          name="postalCode"
-          isRequired
-        />
+        <TextField label="Straat en Huisnummer" name="street" />
+        <NumberField label="Postcode en Gemeente" name="postalCode" />
       </FieldSet>
 
       <FieldSet legend="Contactgegevens">
@@ -37,15 +37,23 @@ export default function PersonalData() {
       </FieldSet>
 
       <FieldSet legend="Identificatie">
-        <DateField label="Geboortedatum" name="birthDate" isRequired />
-        <TextField label="Geslacht" name="gender" isRequired />
-        {/* <TextField label="Nationaliteit" name="nationality" isRequired /> */}
-        {/* <Select label="Nationaliteit" name="nationality" isRequired>
-          <SelectItem textValue="Alvaan">beeeeeee</SelectItem>
-        </Select> */}
+        <DateField label="Geboortedatum" name="birthDate" />
+        <TextField label="Geslacht" name="gender" />
         <MyNationalitySelect></MyNationalitySelect>
-        <TextField label="Rijksregisternummer" name="nationalID" isRequired />
-        <TextField label="Dossiernummer" name="dossierNumber" />
+
+        <MaskField
+          label="Rijksregisternummer"
+          name="nationalID"
+          mask="00.00.00-000.00"
+          inputMode="numeric"
+          description="Vul de 11 cijfers van uw rijksregisternummer in"
+        />
+        <input type="text" name="" id="" pattern="^[0-9]+([.-][0-9]+)*$" />
+        <TextField
+          label="Dossiernummer"
+          name="dossierNumber"
+          description="• Uw rijksregister nummer teruf op uw identiteitskaar: Het bestaan uit 11 cijfers.<br>• U hoeft enkel maar de cijfers in te vullen."
+        />
       </FieldSet>
 
       {/* Section: Legal Representative */}
@@ -66,38 +74,17 @@ export default function PersonalData() {
         {/* Conditionally Show Representative Fields */}
         {hasRepresentative === "yes" && (
           <>
-            <TextField
-              label="Officiële Voornamen"
-              name="repFirstName"
-              isRequired
-            />
-            <TextField label="Achternaam" name="repLastName" isRequired />
-            <TextField
-              label="Straat en Huisnummer"
-              name="repStreet"
-              isRequired
-            />
-            <TextField
-              label="Postcode en Gemeente"
-              name="repPostalCode"
-              isRequired
-            />
+            <TextField label="Officiële Voornamen" name="repFirstName" />
+            <TextField label="Achternaam" name="repLastName" />
+            <TextField label="Straat en Huisnummer" name="repStreet" />
+            <TextField label="Postcode en Gemeente" name="repPostalCode" />
             <TextField label="Telefoon- of GSM-nummer" name="repPhone" />
             <TextField label="E-mailadres" name="repEmail" type="email" />
             <TextField label="Dossiernummer" name="repDossierNumber" />
-            <TextField
-              label="Geboortedatum"
-              name="repBirthDate"
-              type="date"
-              isRequired
-            />
-            <TextField label="Geslacht" name="repGender" isRequired />
-            <TextField label="Nationaliteit" name="repNationality" isRequired />
-            <TextField
-              label="Rijksregisternummer"
-              name="repNationalID"
-              isRequired
-            />
+            <TextField label="Geboortedatum" name="repBirthDate" type="date" />
+            <TextField label="Geslacht" name="repGender" />
+            <TextField label="Nationaliteit" name="repNationality" />
+            <TextField label="Rijksregisternummer" name="repNationalID" />
           </>
         )}
       </fieldset>
@@ -120,16 +107,8 @@ export default function PersonalData() {
         {/* Conditionally Show Alternate Contact Address */}
         {contactAddress === "other" && (
           <>
-            <TextField
-              label="Straat en Huisnummer"
-              name="contactStreet"
-              isRequired
-            />
-            <TextField
-              label="Postcode en Gemeente"
-              name="contactPostalCode"
-              isRequired
-            />
+            <TextField label="Straat en Huisnummer" name="contactStreet" />
+            <TextField label="Postcode en Gemeente" name="contactPostalCode" />
           </>
         )}
       </fieldset>
