@@ -1,17 +1,12 @@
 "use client";
 import React, { useState } from "react";
 import { TextField } from "@/components/aria/TextField";
-// import { Form } from "@/components/aria/Form";
 import { RadioGroup, Radio } from "@/components/aria/RadioGroup";
 import FormStep from "./FormStep";
 import { NumberField } from "@/components/aria/NumberField";
 import { DateField } from "@/components/aria/DateField";
 import FieldSet from "@/components/ui/FieldSet";
-import { Description, Input } from "@/components/aria/Field";
-// import { Select, SelectItem } from "../aria/Select";
 import MyNationalitySelect from "@/components/aria/MyNationalitySelect";
-import { NationalIDField } from "@/components/aria/NationalIDField";
-import InputMask from "react-input-mask-next";
 import { MaskField } from "../aria/MyMaskField";
 
 export default function PersonalData() {
