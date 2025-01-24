@@ -48,7 +48,6 @@ export default function PersonalData() {
           inputMode="numeric"
           description="Vul de 11 cijfers van uw rijksregisternummer in"
         />
-        <input type="text" name="" id="" pattern="^[0-9]+([.-][0-9]+)*$" />
         <TextField
           label="Dossiernummer"
           name="dossierNumber"
