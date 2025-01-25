@@ -55,7 +55,7 @@ export default function FormStep({ children }: FormStepProps) {
 
       <input type="hidden" name="step" value={stepKey} />
 
-      <div>{children}</div>
+      {children}
 
       <div className="flex gap-2">
         {currentStep > 1 && (
