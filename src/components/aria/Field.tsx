@@ -16,7 +16,25 @@ import { twMerge } from "tailwind-merge";
 import { tv } from "tailwind-variants";
 import { composeTailwindRenderProps, focusRing } from "./utils";
 
-export function Label(props: LabelProps) {
+// Original component
+// export function Label(props: LabelProps) {
+//   return (
+//     <RACLabel
+//       {...props}
+//       className={twMerge(
+//         "text-sm text-gray-500 dark:text-zinc-400 font-medium cursor-default w-fit",
+//         props.className
+//       )}
+//     />
+//   );
+// }
+
+// Modified component to folow sentence case rule
+export function Label({ children, ...props }: LabelProps) {
+  const toSentenceCase = (text: string) => {
+    if (!text) return "";
+    return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
+  };
   return (
     <RACLabel
       {...props}
@@ -24,7 +42,9 @@ export function Label(props: LabelProps) {
         "text-sm text-gray-500 dark:text-zinc-400 font-medium cursor-default w-fit",
         props.className
       )}
-    />
+    >
+      {typeof children === "string" ? toSentenceCase(children) : children}
+    </RACLabel>
   );
 }
 
