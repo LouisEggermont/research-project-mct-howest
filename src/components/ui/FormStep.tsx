@@ -22,22 +22,18 @@ export default function FormStep({ children }: FormStepProps) {
   });
 
   useEffect(() => {
-    // Detect when submission completes (isPending flips from true to false)
+    // Detect when submission completes (isPending flips from true to false) and set focus to the heading
     if (prevIsPending.current && !isPending) {
-      // Only progress if there are no errors
       if (
         Object.keys(errorState.errors).length === 0 &&
         currentStep < totalSteps
       ) {
         setStep(currentStep + 1);
+        requestAnimationFrame(() => headingRef.current?.focus());
       }
     }
     prevIsPending.current = isPending;
   }, [isPending, errorState.errors, currentStep, totalSteps, setStep]);
-
-  useEffect(() => {
-    headingRef.current?.focus();
-  }, [currentStep]);
 
   return (
     <Form
@@ -47,17 +43,16 @@ export default function FormStep({ children }: FormStepProps) {
       className="w-full px-6 bg-white dark:bg-gray-900 sm:w-64 md:w-96 lg:w-128 xl:w-160"
     >
       <div>
-        <p className="text-sm text-gray-600 dark:text-gray-300 ">
-          Stap {currentStep} van {totalSteps}
-        </p>
         <h2
+          id="formHeading"
           ref={headingRef}
           tabIndex={-1}
+          aria-live="polite"
           className="text-2xl font-semibold focus-visible:outline-none"
         >
           {stepTitle}
         </h2>
-        <p className="sr-only ">
+        <p className="text-sm text-gray-600 dark:text-gray-300 ">
           Stap {currentStep} van {totalSteps}
         </p>
       </div>
@@ -71,7 +66,10 @@ export default function FormStep({ children }: FormStepProps) {
           {currentStep > 1 && (
             <li>
               <Button
-                onPress={() => setStep(currentStep - 1)}
+                onPress={() => {
+                  setStep(currentStep - 1);
+                  requestAnimationFrame(() => headingRef.current?.focus());
+                }}
                 aria-label={`Ga naar de vorige stap, Stap ${
                   currentStep - 1
                 } van ${totalSteps}`}
