@@ -45,13 +45,21 @@ export default function FormStep({ children }: FormStepProps) {
       validationErrors={errorState.errors}
       className="max-w-md px-6 bg-white dark:bg-gray-900"
     >
-      <h2
-        ref={headingRef}
-        tabIndex={-1}
-        className="text-2xl font-semibold focus-visible:outline-none"
-      >
-        {stepTitle}
-      </h2>
+      <div>
+        <p className="text-sm text-gray-600 dark:text-gray-300 ">
+          Stap {currentStep} van {totalSteps}
+        </p>
+        <h2
+          ref={headingRef}
+          tabIndex={-1}
+          className="text-2xl font-semibold focus-visible:outline-none"
+        >
+          {stepTitle}
+        </h2>
+        <p className="sr-only ">
+          Stap {currentStep} van {totalSteps}
+        </p>
+      </div>
 
       <input type="hidden" name="step" value={stepKey} />
 
