@@ -18,9 +18,5 @@ export default function MultiPageForm() {
   const { stepKey } = useFormContext(); // ✅ Removed `currentStep` since it's unused
   const StepComponent = stepComponents[stepKey];
 
-  return (
-    <section className="flex flex-col">
-      {StepComponent ? <StepComponent /> : <p>Ongeldige stap</p>}
-    </section>
-  );
+  return <div>{StepComponent ? <StepComponent /> : <p>Ongeldige stap</p>}</div>;
 }
