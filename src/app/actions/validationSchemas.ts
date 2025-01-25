@@ -1,18 +1,15 @@
 import { z } from "zod";
 
-// ✅ Personal Data Validation
 export const personalDataSchema = z.object({
-  firstName: z.string().min(1, "Voornaam is verplicht."),
-  lastName: z.string().min(1, "Achternaam is verplicht."),
+  // firstName: z.string().min(1, "Voornaam is verplicht."),
+  // lastName: z.string().min(1, "Achternaam is verplicht."),
 });
 
-// ✅ Contact Details Validation
-export const presentativeSchema = z.object({
+export const representativeSchema = z.object({
   // phone: z.string().min(1, "Telefoonnummer moet minstens 1 tekens bevatten."),
   // email: z.string().min(1, "Ongeldig e-mailadres."),
 });
 
-// ✅ Identification Step Validation
 export const identificationSchema = z.object({
   nationalID: z
     .string()
@@ -22,13 +19,11 @@ export const identificationSchema = z.object({
     ),
 });
 
-// ✅ Contact Details Validation
 export const contactDetailsSchema = z.object({
   phone: z.string().min(1, "Telefoonnummer moet minstens 1 tekens bevatten."),
   email: z.string().min(1, "Ongeldig e-mailadres."),
 });
 
-// ✅ Define a type-safe schema mapping
 export const formSchemas: Record<
   string,
   z.ZodObject<Record<string, z.ZodTypeAny>>
@@ -36,5 +31,5 @@ export const formSchemas: Record<
   identification: identificationSchema,
   contact: contactDetailsSchema,
   personalData: personalDataSchema,
-  representative: presentativeSchema,
+  representative: representativeSchema,
 };
