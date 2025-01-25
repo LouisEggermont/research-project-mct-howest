@@ -63,6 +63,7 @@ export function MaskField({
           setValue(val);
           if (onChange) onChange(val);
         }}
+        aria-hidden="true"
         className="hidden"
       />
       {/* Visible Input from react-aria-components */}
