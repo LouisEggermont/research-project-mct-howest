@@ -66,22 +66,48 @@ export default function FormStep({ children }: FormStepProps) {
 
       <div>{children}</div>
 
-      <nav className="flex gap-2 mt-6">
-        {currentStep > 1 && (
-          <Button onPress={() => setStep(currentStep - 1)}>Vorige</Button>
-        )}
+      <nav aria-label="Vorige/Volgende stap" className="mt-6">
+        <ul className="flex gap-2">
+          {currentStep > 1 && (
+            <li>
+              <Button
+                onPress={() => setStep(currentStep - 1)}
+                aria-label={`Ga naar de vorige stap, Stap ${
+                  currentStep - 1
+                } van ${totalSteps}`}
+              >
+                Vorige
+              </Button>
+            </li>
+          )}
 
-        {currentStep < totalSteps ? (
-          <Button type="submit" className="flex" isDisabled={isPending}>
-            {/* Spinner */}
-            {isPending && <Spinner className="mr-2" />}
-            {isPending ? "Verwerken..." : "Volgende"}
-          </Button>
-        ) : (
-          <Button type="submit" isDisabled={isPending}>
-            {isPending ? "Verzenden..." : "Verzenden"}
-          </Button>
-        )}
+          {currentStep < totalSteps ? (
+            <li>
+              <Button
+                type="submit"
+                className="flex"
+                isDisabled={isPending}
+                aria-label={
+                  currentStep < totalSteps
+                    ? `Ga naar de volgende stap, Stap ${
+                        currentStep + 1
+                      } van ${totalSteps}`
+                    : "Formulier verzenden"
+                }
+                aria-current={currentStep === totalSteps ? "step" : undefined}
+              >
+                {isPending && <Spinner className="mr-2" />}
+                {isPending ? "Verwerken..." : "Volgende"}
+              </Button>
+            </li>
+          ) : (
+            <li>
+              <Button type="submit" isDisabled={isPending}>
+                {isPending ? "Verzenden..." : "Verzenden"}
+              </Button>
+            </li>
+          )}
+        </ul>
       </nav>
     </Form>
   );
