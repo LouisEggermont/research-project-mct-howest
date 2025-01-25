@@ -2,7 +2,6 @@
 
 import React from "react";
 import { useFormContext } from "@/context/FormContext";
-import Sidebar from "./Sidebar";
 import Identification from "./Identification";
 import ContactDetails from "./ContactDetails";
 import PersonalData from "./PersonalData";
