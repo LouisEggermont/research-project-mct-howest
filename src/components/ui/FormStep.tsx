@@ -64,7 +64,7 @@ export default function FormStep({ children }: FormStepProps) {
 
       <input type="hidden" name="step" value={stepKey} />
 
-      <div>{children}</div>
+      {children}
 
       <nav aria-label="Vorige/Volgende stap" className="mt-6 min-w-0">
         <ul className="flex gap-2 justify-end">
