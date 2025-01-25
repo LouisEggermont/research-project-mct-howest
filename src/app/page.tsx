@@ -23,7 +23,7 @@ export default function Home() {
         </header>
 
         <main className="container mx-auto flex flex-1 mt-8 dark:bg-gray-900">
-          <Sidebar className="hidden md:block w-64 p-4  bg-gray-100 dark:bg-gray-800 border border-gray-300" />
+          <Sidebar className="hidden md:block w-64 p-4 rounded-lg bg-gray-100 dark:bg-gray-800 border border-gray-300" />
 
           <section className="flex-1 flex">
             <MultiPageForm />
