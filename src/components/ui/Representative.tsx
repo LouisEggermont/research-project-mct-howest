@@ -57,11 +57,15 @@ export default function Representative() {
       </FieldSet>
 
       {/* Announcement for screen readers - Only when needed */}
-      {hasRepresentative === "yes" && (
+      {/* {hasRepresentative === "yes" && (
         <div className="sr-only" aria-live="polite">
           Vul de aanvullende gegevens van uw wettelijk vertegenwoordiger in.
         </div>
-      )}
+      )} */}
+
+      <span aria-live="polite" className="sr-only">
+        {hasRepresentative === "yes" && "Vul de aanvullende gegevens in."}
+      </span>
 
       {/* Question 3: Who acts as the legal representative? */}
       {hasRepresentative === "yes" && (
@@ -69,7 +73,7 @@ export default function Representative() {
           <CheckboxGroup
             label="Selecteer alle toepasselijke opties"
             name="representativeTypes"
-            description="Als de wettelijk vertegenwoordiger een voogd, provoogd of (voorlopig) bewindvoerder is, voegt u bij uw aanvraag een kopie van het vonnis van de rechtbank waarin dat gestaafd wordt."
+            // description="Als de wettelijk vertegenwoordiger een voogd, provoogd of (voorlopig) bewindvoerder is, voegt u bij uw aanvraag een kopie van het vonnis van de rechtbank waarin dat gestaafd wordt."
             value={representativeTypes}
             onChange={handleSelectionChange}
             errorMessage={errorMessage}
