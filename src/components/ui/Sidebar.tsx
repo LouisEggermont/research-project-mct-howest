@@ -4,12 +4,16 @@ import { useFormContext } from "@/context/FormContext";
 import { Button } from "@/components/aria/Button";
 import { steps } from "@/config/steps";
 
-export default function Sidebar() {
+interface SidebarProps {
+  className?: string;
+}
+
+export default function Sidebar(props: SidebarProps) {
   const { currentStep, setStep, totalSteps } = useFormContext();
 
   return (
-    <aside className="w-64 p-4 bg-gray-100 dark:bg-gray-800">
-      <ul className="space-y-2">
+    <aside className={props.className}>
+      <ul className="mt-4 space-y-2">
         {steps.map((step, index) => (
           <li key={step.key}>
             {/* <button
