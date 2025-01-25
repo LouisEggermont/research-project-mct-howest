@@ -3,6 +3,7 @@ import React from "react";
 import { useFormContext } from "@/context/FormContext";
 import { Button } from "@/components/aria/Button";
 import { steps } from "@/config/steps";
+import { twMerge } from "tailwind-merge";
 
 interface SidebarProps {
   className?: string;
@@ -12,7 +13,7 @@ export default function Sidebar(props: SidebarProps) {
   const { currentStep, setStep, totalSteps } = useFormContext();
 
   return (
-    <aside className={props.className}>
+    <aside className={twMerge("", props.className)}>
       <ul className="mt-4 space-y-2">
         {steps.map((step, index) => (
           <li key={step.key}>

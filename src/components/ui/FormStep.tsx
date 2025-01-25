@@ -16,7 +16,6 @@ export default function FormStep({ children }: FormStepProps) {
   const headingRef = useRef<HTMLHeadingElement>(null);
   const prevIsPending = useRef(false);
 
-  // ✅ Initialize validation state
   const [errorState, formAction, isPending] = useActionState(validateForm, {
     errors: {},
   });
@@ -44,6 +43,7 @@ export default function FormStep({ children }: FormStepProps) {
       id={`step-form-${stepKey}`}
       action={formAction}
       validationErrors={errorState.errors}
+      className="max-w-md p-6 bg-white dark:bg-govGray-900"
     >
       <h2
         ref={headingRef}
@@ -55,9 +55,9 @@ export default function FormStep({ children }: FormStepProps) {
 
       <input type="hidden" name="step" value={stepKey} />
 
-      {children}
+      <div>{children}</div>
 
-      <div className="flex gap-2">
+      <nav className="flex gap-2 mt-6">
         {currentStep > 1 && (
           <Button onPress={() => setStep(currentStep - 1)}>Vorige</Button>
         )}
@@ -95,7 +95,7 @@ export default function FormStep({ children }: FormStepProps) {
             {isPending ? "Verzenden..." : "Verzenden"}
           </Button>
         )}
-      </div>
+      </nav>
     </Form>
   );
 }
