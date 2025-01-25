@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "dev:no-validation": "NEXT_PUBLIC_DISABLE_VALIDATION=true next dev",
+    "dev:no-validation": "NEXT_PUBLIC_DISABLE_CLIENT_VALIDATION=true NEXT_PUBLIC_DISABLE_SERVER_VALIDATION=true next dev",
+    "dev:no-server-validation": "NEXT_PUBLIC_DISABLE_CLIENT_VALIDATION=true next dev",
+    "dev:no-client-validation": "NEXT_PUBLIC_DISABLE_SERVER_VALIDATION=true next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",

@@ -17,7 +17,8 @@ import React, { useEffect } from "react";
 import { FormProps, Form as RACForm } from "react-aria-components";
 import { twMerge } from "tailwind-merge";
 
-const disableValidation = process.env.NEXT_PUBLIC_DISABLE_VALIDATION === "true";
+const disableValidation =
+  process.env.NEXT_PUBLIC_DISABLE_CLIENT_VALIDATION === "true";
 
 export function Form({ validationErrors, ...props }: FormProps) {
   useEffect(() => {

@@ -2,19 +2,25 @@
 
 import { formSchemas } from "./validationSchemas";
 
-// Define a type for form state
 interface FormState {
-  errors: Record<string, string[]>; // Errors mapped by field name
+  errors: Record<string, string[]>;
 }
 
 export async function validateForm(prevState: FormState, formData: FormData) {
-  console.log("formData", formData);
-  const stepKey = formData.get("step"); // ✅ Get dynamic step key
-  if (!stepKey || !formSchemas[stepKey as string]) {
-    return { errors: { general: ["Invalid step"] } }; // Handle unknown steps
+  if (process.env.NEXT_PUBLIC_DISABLE_SERVER_VALIDATION === "true") {
+    console.log("[Server] Server-side validation is disabled.");
+    return { errors: {} };
   }
 
-  const schema = formSchemas[stepKey as string]; // ✅ Get correct validation schema
+  console.log("formData", formData);
+
+  const stepKey = formData.get("step");
+
+  if (!stepKey || !formSchemas[stepKey as string]) {
+    return { errors: { general: ["Invalid step"] } };
+  }
+
+  const schema = formSchemas[stepKey as string];
   const data = Object.fromEntries(formData.entries());
   const result = schema.safeParse(data);
 
@@ -33,5 +39,5 @@ export async function validateForm(prevState: FormState, formData: FormData) {
     };
   }
 
-  return { errors: {} }; // ✅ No validation errors
+  return { errors: {} };
 }
