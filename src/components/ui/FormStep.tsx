@@ -67,7 +67,7 @@ export default function FormStep({ children }: FormStepProps) {
       <div>{children}</div>
 
       <nav aria-label="Vorige/Volgende stap" className="mt-6">
-        <ul className="flex gap-2">
+        <ul className="flex gap-2 justify-end">
           {currentStep > 1 && (
             <li>
               <Button
