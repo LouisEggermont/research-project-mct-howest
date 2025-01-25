@@ -44,7 +44,7 @@ export default function FormStep({ children }: FormStepProps) {
       id={`step-form-${stepKey}`}
       action={formAction}
       validationErrors={errorState.errors}
-      className="max-w-md px-6 bg-white dark:bg-gray-900"
+      className="w-full px-6 bg-white dark:bg-gray-900 sm:w-64 md:w-96 lg:w-128 xl:w-160"
     >
       <div>
         <p className="text-sm text-gray-600 dark:text-gray-300 ">
@@ -66,7 +66,7 @@ export default function FormStep({ children }: FormStepProps) {
 
       <div>{children}</div>
 
-      <nav aria-label="Vorige/Volgende stap" className="mt-6">
+      <nav aria-label="Vorige/Volgende stap" className="mt-6 min-w-0">
         <ul className="flex gap-2 justify-end">
           {currentStep > 1 && (
             <li>
