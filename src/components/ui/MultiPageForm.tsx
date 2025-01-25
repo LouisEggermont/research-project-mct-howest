@@ -6,9 +6,11 @@ import Sidebar from "./Sidebar";
 import Identification from "./Identification";
 import ContactDetails from "./ContactDetails";
 import PersonalData from "./PersonalData";
+import Representative from "./Representative";
 
 const stepComponents: Record<string, React.FC> = {
   personal: PersonalData,
+  representative: Representative,
   contact: ContactDetails,
   identification: Identification,
 };
