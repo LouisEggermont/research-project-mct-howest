@@ -14,7 +14,7 @@ export default function Sidebar(props: SidebarProps) {
 
   return (
     <aside className={twMerge("", props.className)}>
-      <ul className="mt-4 space-y-2">
+      <ul className="space-y-2">
         {steps.map((step, index) => (
           <li key={step.key}>
             {/* <button

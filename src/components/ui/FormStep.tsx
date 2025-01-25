@@ -43,7 +43,7 @@ export default function FormStep({ children }: FormStepProps) {
       id={`step-form-${stepKey}`}
       action={formAction}
       validationErrors={errorState.errors}
-      className="max-w-md p-6 bg-white dark:bg-govGray-900"
+      className="max-w-md px-6 bg-white dark:bg-gray-900"
     >
       <h2
         ref={headingRef}

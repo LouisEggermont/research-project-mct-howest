@@ -10,7 +10,12 @@ export default function FieldSet({
   props?: React.HTMLAttributes<HTMLFieldSetElement>;
 }>) {
   return (
-    <fieldset className={twMerge("", props.className)}>
+    <fieldset
+      className={twMerge(
+        "flex flex-col gap-4 first:mt-0 mt-8",
+        props.className
+      )}
+    >
       <legend className="text-lg font-semibold">{legend}</legend>
       {children}
     </fieldset>

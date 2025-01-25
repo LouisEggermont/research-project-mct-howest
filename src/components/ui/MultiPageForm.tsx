@@ -20,7 +20,7 @@ export default function MultiPageForm() {
   const StepComponent = stepComponents[stepKey];
 
   return (
-    <section className="flex flex-col  ">
+    <section className="flex flex-col">
       {StepComponent ? <StepComponent /> : <p>Ongeldige stap</p>}
     </section>
   );
