@@ -1,7 +1,7 @@
+import { twMerge } from "tailwind-merge";
 export default function FieldSet({
   children,
   legend,
-  className,
   ...props
 }: Readonly<{
   children: React.ReactNode;
@@ -10,7 +10,7 @@ export default function FieldSet({
   props?: React.HTMLAttributes<HTMLFieldSetElement>;
 }>) {
   return (
-    <fieldset className={className} {...props}>
+    <fieldset className={twMerge("", props.className)}>
       <legend className="text-lg font-semibold">{legend}</legend>
       {children}
     </fieldset>
