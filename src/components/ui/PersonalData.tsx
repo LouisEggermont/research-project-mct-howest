@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { TextField } from "@/components/aria/TextField";
-import FormStep from "./FormStep";
+
 import { DateField } from "@/components/aria/DateField";
 import FieldSet from "@/components/ui/FieldSet";
 import MyNationalitySelect from "@/components/aria/MyNationalitySelect";
@@ -10,7 +10,7 @@ import { Radio, RadioGroup } from "../aria/RadioGroup";
 
 export default function PersonalData() {
   return (
-    <FormStep>
+    <div>
       <FieldSet legend="Naam">
         <TextField label="Officiële Voornamen" name="firstName" />
         <TextField label="Achternaam" name="lastName" />
@@ -84,6 +84,6 @@ export default function PersonalData() {
           description="U hoeft dit veld niet in te vullen als u geen dossiernummer heeft of niet kent"
         />
       </FieldSet>
-    </FormStep>
+    </div>
   );
 }

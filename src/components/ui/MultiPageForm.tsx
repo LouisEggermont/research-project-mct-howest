@@ -6,6 +6,7 @@ import Identification from "./Identification";
 import ContactDetails from "./ContactDetails";
 import PersonalData from "./PersonalData";
 import Representative from "./Representative";
+import FormStep from "./FormStep";
 
 const stepComponents: Record<string, React.FC> = {
   personal: PersonalData,
@@ -15,8 +16,12 @@ const stepComponents: Record<string, React.FC> = {
 };
 
 export default function MultiPageForm() {
-  const { stepKey } = useFormContext(); // ✅ Removed `currentStep` since it's unused
+  const { stepKey } = useFormContext();
   const StepComponent = stepComponents[stepKey];
 
-  return <div>{StepComponent ? <StepComponent /> : <p>Ongeldige stap</p>}</div>;
+  return (
+    <FormStep>
+      {StepComponent ? <StepComponent /> : <p>Ongeldige stap</p>}
+    </FormStep>
+  );
 }

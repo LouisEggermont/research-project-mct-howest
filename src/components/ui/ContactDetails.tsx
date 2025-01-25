@@ -1,6 +1,5 @@
 "use client";
 import { TextField } from "@/components/aria/TextField";
-import FormStep from "./FormStep"; // Import the wrapper
 import FieldSet from "./FieldSet";
 import { Radio, RadioGroup } from "../aria/RadioGroup";
 import { useState } from "react";
@@ -8,7 +7,7 @@ import { useState } from "react";
 export default function ContactDetails() {
   const [contactAddress, setContactAddress] = useState("own");
   return (
-    <FormStep>
+    <div>
       <FieldSet legend="Contactadres">
         <RadioGroup
           label="Op welk adres wilt u de briefwisseling van het VAPH ontvangen?"
@@ -29,6 +28,6 @@ export default function ContactDetails() {
           </>
         )}
       </FieldSet>
-    </FormStep>
+    </div>
   );
 }

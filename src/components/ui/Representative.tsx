@@ -6,7 +6,6 @@ import { Checkbox, CheckboxGroup } from "../aria/Checkbox";
 import { DateField } from "../aria/DateField";
 import MyNationalitySelect from "../aria/MyNationalitySelect";
 import { MaskField } from "../aria/MyMaskField";
-import FormStep from "./FormStep";
 import FieldSet from "./FieldSet";
 
 export default function Representative() {
@@ -41,7 +40,7 @@ export default function Representative() {
   );
 
   return (
-    <FormStep>
+    <div>
       {/* Question 2: Do you have a legal representative? */}
       <FieldSet legend="Wettelijk Vertegenwoordiger">
         <RadioGroup
@@ -202,6 +201,6 @@ export default function Representative() {
           description="Als de wettelijk vertegenwoordiger een voogd, provoogd of (voorlopig) bewindvoerder is, voegt u bij uw aanvraag een kopie van het vonnis van de rechtbank waarin dat gestaafd wordt."
         ></TextField>
       )}
-    </FormStep>
+    </div>
   );
 }
