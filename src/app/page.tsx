@@ -22,7 +22,7 @@ export default function Home() {
       <div className="mt-6">
         <Link href="/form">
           <button className="bg-govBlue-800 text-white px-6 py-3 rounded-md text-lg font-semibold shadow-md hover:bg-govBlue-900 transition">
-            Start uw aanvraag
+            Start Uw Aanvraag
           </button>
         </Link>
       </div>
@@ -190,13 +190,13 @@ export default function Home() {
       </section>
 
       {/* CTA Button - End of Page */}
-      <div className="mt-10 text-center">
+      {/* <div className="mt-10 text-center">
         <Link href="/form">
           <button className="bg-govBlue-800 text-white px-6 py-3 rounded-md text-lg font-semibold shadow-md hover:bg-govBlue-900 transition">
             Start uw aanvraag
           </button>
         </Link>
-      </div>
+      </div> */}
     </main>
   );
 }

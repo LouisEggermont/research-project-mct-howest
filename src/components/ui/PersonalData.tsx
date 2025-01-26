@@ -76,7 +76,7 @@ export default function PersonalData() {
           name="nationalID"
           mask="00.00.00-000.00"
           inputMode="numeric"
-          description="Vul de 11 cijfers van uw rijksregisternummer in"
+          description="Voer enkel de 11 cijfers van uw rijksregisternummer in "
         />
         <TextField
           label="Dossiernummer (Optioneel)"

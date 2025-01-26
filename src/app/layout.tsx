@@ -16,19 +16,20 @@ export default function RootLayout({
     <html lang="nl-be">
       <body>
         <nav
-          aria-label="Skip links and accessibility options"
+          aria-label="Links naar de hoofdinhoud"
           className="sr-only focus-within:not-sr-only absolute top-0 left-0 w-full bg-gray-100 dark:bg-gray-800 p-2"
         >
-          <ul className="flex gap-4 p-2">
-            <li>
-              <a
-                href="#main"
-                // className="focus:outline-none focus:ring-2 focus:ring-blue-500 p-2"
-              >
-                Sla over naar hoofdinhoud
-              </a>
-            </li>
-          </ul>
+          {/* <ul className="flex gap-4 p-2">
+            <li> */}
+          <a
+            href="#main"
+            className="sr-only focus-within:not-sr-only absolute top-0 left-0 w-full bg-gray-100 dark:bg-gray-800 p-2"
+            // className="focus:outline-none focus:ring-2 focus:ring-blue-500 p-2"
+          >
+            Sla over naar hoofdinhoud
+          </a>
+          {/* </li>
+          </ul> */}
         </nav>
 
         <div className="flex flex-col min-h-screen">

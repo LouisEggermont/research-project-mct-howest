@@ -138,7 +138,7 @@ export default function Representative() {
             name="repNationalID"
             mask="00.00.00-000.00"
             inputMode="numeric"
-            description="Vul de 11 cijfers van uw rijksregisternummer in"
+            description="Voer enkel de 11 cijfers van uw rijksregisternummer in "
           />
 
           {/* Screen reader description (only for first name field) */}
@@ -188,7 +188,7 @@ export default function Representative() {
             name="rep2NationalID"
             mask="00.00.00-000.00"
             inputMode="numeric"
-            description="Vul de 11 cijfers van uw rijksregisternummer in"
+            description="Voer enkel de 11 cijfers van uw rijksregisternummer in "
           />
         </FieldSet>
       ) : null}
