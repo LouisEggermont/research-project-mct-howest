@@ -1,5 +1,7 @@
 # Accessible Subsidy Form – Research Project (MCT Howest)
 
+[![en](https://img.shields.io/badge/lang-nl-red.svg)](README.nl.md)
+
 🚀 This project researches how to create accessible forms for subsidies using React-Aria. The form is inspired by the application process of VAPH (Vlaams Agentschap voor Personen met een Handicap).
 
 ## 📖 Table of Contents
