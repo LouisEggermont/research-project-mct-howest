@@ -1,89 +1,3 @@
-<style>
-/* General Styling */
-* {
-  color: #3C3D3C;
-  font-family: "FlandersArtSans", sans-serif;
-}
-
-h1, h2 {
-  color: #005B6E;
-}
-
-@font-face {
-  font-family: "FlandersArtSans";
-  src: url("https://www.sport.vlaanderen/fonts/flanders-art/FlandersArtSans-Regular.woff") format("woff");
-  font-weight: normal;
-}
-@font-face {
-  font-family: "FlandersArtSans";
-  src: url("https://www.vlaanderen.be/_nuxt/fonts/FlandersArtSans-Regular.97bbb93.woff2") format("woff");
-  font-weight: 500;
-}
-@font-face {
-  font-family: "FlandersArtSans";
-  src: url("https://www.sport.vlaanderen/fonts/flanders-art/FlandersArtSans-Bold.woff") format("woff");
-  font-weight: bold;
-}
-
-
-/* Code Block Styling */
-pre {
-  background-color: #F4F4F4;
-  border-radius: 5px;
-  padding: 15px;
-  overflow-x: auto;
-  font-family: monospace;
-  font-size: 14px;
-  line-height: 1.4; /* Slightly tighter spacing for code readability */
-  border: 1px solid #CCC;
-}
-
-code {
-  padding-top: 6px;
-  padding-bottom: 6px;
-  border-radius: 3px;
-  font-family: monospace;
-  font-size: 13px;
-  line-height: 1.4;
-}
-
-/* Improve List Readability */
-ul, ol {
-  padding-left: 20px;
-  margin-bottom: 10px;
-  line-height: 1.6; /* Ensures proper spacing between bullet points */
-}
-
-li {
-  margin-bottom: 5px; /* More spacing between items */
-}
-
-/* Adjust Tables */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  line-height: 1.5;
-}
-
-th, td {
-  border: 1px solid #CCC;
-  padding: 10px;
-  text-align: left;
-}
-
-/* Fix Spacing for Sections */
-p {
-  margin-bottom: 10px; /* Adds breathing space between paragraphs */
-  line-height: 1.6;
-}
-hr {
-  border: none;
-  border-top: 3px solid #005B6E; /* Makes it thicker and more visible */
-  margin: 40px 0; /* Increases vertical spacing before and after */
-  opacity: 0.7; /* Slight transparency for a softer look */
-}
-</style>
-
 # Accessible Subsidy Form – Research Project (MCT Howest)
 
 [English](README.md) | [Nederlands](README.nl.md)
@@ -331,3 +245,89 @@ You now know how to:
 ✅ Run accessibility tests
 
 🚀 Happy coding! If you need help, refer to [Next.js Documentation](https://nextjs.org/docs).
+
+<!-- styling used on to create PDF https://md-to-pdf.fly.dev/
+
+/* General Styling */
+* {
+  color: #3C3D3C;
+  font-family: "FlandersArtSans", sans-serif;
+}
+
+h1, h2 {
+  color: #005B6E;
+}
+
+@font-face {
+  font-family: "FlandersArtSans";
+  src: url("https://www.sport.vlaanderen/fonts/flanders-art/FlandersArtSans-Regular.woff") format("woff");
+  font-weight: normal;
+}
+@font-face {
+  font-family: "FlandersArtSans";
+  src: url("https://www.vlaanderen.be/_nuxt/fonts/FlandersArtSans-Regular.97bbb93.woff2") format("woff");
+  font-weight: 500;
+}
+@font-face {
+  font-family: "FlandersArtSans";
+  src: url("https://www.sport.vlaanderen/fonts/flanders-art/FlandersArtSans-Bold.woff") format("woff");
+  font-weight: bold;
+}
+
+
+/* Code Block Styling */
+pre {
+  background-color: #F4F4F4;
+  border-radius: 5px;
+  padding: 15px;
+  overflow-x: auto;
+  font-family: monospace;
+  font-size: 14px;
+  line-height: 1.4; /* Slightly tighter spacing for code readability */
+  border: 1px solid #CCC;
+}
+
+code {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  border-radius: 3px;
+  font-family: monospace;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+/* Improve List Readability */
+ul, ol {
+  padding-left: 20px;
+  margin-bottom: 10px;
+  line-height: 1.6; /* Ensures proper spacing between bullet points */
+}
+
+li {
+  margin-bottom: 5px; /* More spacing between items */
+}
+
+/* Adjust Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  line-height: 1.5;
+}
+
+th, td {
+  border: 1px solid #CCC;
+  padding: 10px;
+  text-align: left;
+}
+
+/* Fix Spacing for Sections */
+p {
+  margin-bottom: 10px; /* Adds breathing space between paragraphs */
+  line-height: 1.6;
+}
+hr {
+  border: none;
+  border-top: 3px solid #005B6E; /* Makes it thicker and more visible */
+  margin: 40px 0; /* Increases vertical spacing before and after */
+  opacity: 0.7; /* Slight transparency for a softer look */
+} -->
