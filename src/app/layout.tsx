@@ -13,7 +13,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="nl">
+    <html lang="nl-be">
       <body>
         <nav
           aria-label="Skip links and accessibility options"
