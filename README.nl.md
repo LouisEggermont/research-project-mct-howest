@@ -1,6 +1,6 @@
 # Toegankelijk Subsidieformulier – Research Project (MCT Howest)
 
-[![en](https://img.shields.io/badge/lang-en-red.svg)](README.md)
+[English](README.md) | [Nederlands](README.nl.md)
 
 Dit project onderzoekt hoe toegankelijke formulieren voor subsidies kunnen worden gemaakt met behulp van React-Aria. Het formulier is geïnspireerd op de aanvraagprocedure van het VAPH (Vlaams Agentschap voor Personen met een Handicap).
 
