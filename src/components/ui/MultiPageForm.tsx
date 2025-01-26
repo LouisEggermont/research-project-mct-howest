@@ -2,13 +2,17 @@
 
 import React from "react";
 import { useFormContext } from "@/context/FormContext";
+
+import Introduction from "./Introduction";
 import Identification from "./Identification";
 import ContactDetails from "./ContactDetails";
 import PersonalData from "./PersonalData";
 import Representative from "./Representative";
+
 import FormStep from "./FormStep";
 
 const stepComponents: Record<string, React.FC> = {
+  introduction: Introduction,
   personal: PersonalData,
   representative: Representative,
   contact: ContactDetails,

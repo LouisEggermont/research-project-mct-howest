@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -22,9 +23,9 @@ export default function RootLayout({
             <li>
               <a
                 href="#main"
-                className="focus:outline-none focus:ring-2 focus:ring-blue-500 p-2"
+                // className="focus:outline-none focus:ring-2 focus:ring-blue-500 p-2"
               >
-                Skip to main content
+                Sla over naar hoofdinhoud
               </a>
             </li>
           </ul>
@@ -32,25 +33,30 @@ export default function RootLayout({
 
         <div className="flex flex-col min-h-screen">
           <header className="bg-govBlue-800 text-white p-4 shadow-md">
-            <div className="container  mx-auto flex justify-between items-center">
-              <h1 className="text-lg font-bold">Mijn Formulier</h1>
-              <nav className="space-x-4">
+            <nav className="container  mx-auto flex justify-between items-center">
+              <Link href="/" className="text-lg font-bold">
+                Mijn Formulier
+              </Link>
+              <div className="space-x-4">
                 <a href="#" className="hover:underline">
                   Over
                 </a>
                 <a href="#" className="hover:underline">
                   Contact
                 </a>
-              </nav>
-            </div>
+              </div>
+            </nav>
           </header>
 
           <div className="container  mx-auto flex flex-1 mt-8 dark:bg-gray-900">
             {children}
           </div>
 
-          <footer className="bg-white dark:bg-gray-900 p-4 border-t mt-8 border-gray-300">
-            <div className="container  mx-auto flex justify-start">
+          <footer
+            role="contentinfo"
+            className="bg-white dark:bg-gray-900 p-4 border-t mt-8 border-gray-300"
+          >
+            <div className="container mx-auto flex justify-start">
               <p className="font-bold text-black dark:text-white">
                 Vlaamse Overheid Formulier
               </p>

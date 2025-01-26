@@ -40,7 +40,7 @@ export default function FormStep({ children }: FormStepProps) {
       id={`step-form-${stepKey}`}
       action={formAction}
       validationErrors={errorState.errors}
-      className="w-full px-6 bg-white dark:bg-gray-900 sm:w-64 md:w-96 lg:w-128 xl:w-160"
+      className="w-full bg-white dark:bg-gray-900 sm:w-64 md:w-96 lg:w-128 xl:w-160"
     >
       <div>
         <h2
@@ -48,7 +48,7 @@ export default function FormStep({ children }: FormStepProps) {
           ref={headingRef}
           tabIndex={-1}
           aria-live="polite"
-          className="text-2xl font-semibold focus-visible:outline-none"
+          className="text-2xl font-semibold focus-visible:outline-none "
         >
           {stepTitle}
         </h2>

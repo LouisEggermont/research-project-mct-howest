@@ -10,33 +10,33 @@ interface SidebarProps {
 }
 
 export default function Sidebar(props: SidebarProps) {
-  const { currentStep, setStep, totalSteps } = useFormContext();
+  const { currentStep, setStep } = useFormContext();
 
   return (
-    <aside className={twMerge("", props.className)}>
+    <nav
+      className={twMerge("space-y-2 max-h-max", props.className)}
+      aria-labelledby="form-sidebar-title"
+    >
+      {/* Sidebar Title */}
+      <h2 id="form-sidebar-title" className="text-lg font-semibold">
+        Formulier Navigatie
+      </h2>
+
+      {/* List of Steps */}
       <ul className="space-y-2">
         {steps.map((step, index) => (
           <li key={step.key}>
-            {/* <button
-              onClick={() => setStep(index + 1)}
-              className={`w-full text-left p-2 rounded-lg ${
-                currentStep === index + 1
-                  ? "bg-blue-500 text-white"
-                  : "bg-transparent"
-              }`}
-            >
-              {index + 1}. {step.title}
-            </button> */}
             <Button
               onPress={() => setStep(index + 1)}
               variant={currentStep === index + 1 ? "primary" : "secondary"}
               className="w-full text-left p-2 rounded-lg border-0"
+              aria-current={currentStep === index + 1 ? "step" : undefined}
             >
               {index + 1}. {step.title}
             </Button>
           </li>
         ))}
       </ul>
-    </aside>
+    </nav>
   );
 }
