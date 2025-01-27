@@ -2,13 +2,17 @@
 
 import React from "react";
 import { useFormContext } from "@/context/FormContext";
-import Sidebar from "./Sidebar";
+
+import Introduction from "./Introduction";
 import Identification from "./Identification";
 import ContactDetails from "./ContactDetails";
 import PersonalData from "./PersonalData";
 import Representative from "./Representative";
 
+import FormStep from "./FormStep";
+
 const stepComponents: Record<string, React.FC> = {
+  introduction: Introduction,
   personal: PersonalData,
   representative: Representative,
   contact: ContactDetails,
@@ -16,15 +20,12 @@ const stepComponents: Record<string, React.FC> = {
 };
 
 export default function MultiPageForm() {
-  const { stepKey } = useFormContext(); // ✅ Removed `currentStep` since it's unused
+  const { stepKey } = useFormContext();
   const StepComponent = stepComponents[stepKey];
 
   return (
-    <div className="flex">
-      <Sidebar />
-      <div className="flex-1 p-6">
-        {StepComponent ? <StepComponent /> : <p>Ongeldige stap</p>}
-      </div>
-    </div>
+    <FormStep>
+      {StepComponent ? <StepComponent /> : <p>Ongeldige stap</p>}
+    </FormStep>
   );
 }

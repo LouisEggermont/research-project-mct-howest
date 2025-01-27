@@ -5,6 +5,7 @@ import { useActionState } from "react";
 import { Button } from "@/components/aria/Button";
 import { Form } from "@/components/aria/Form";
 import { validateForm } from "@/app/actions/validateForm";
+import Spinner from "./Spinner";
 
 interface FormStepProps {
   children: React.ReactNode;
@@ -16,86 +17,96 @@ export default function FormStep({ children }: FormStepProps) {
   const headingRef = useRef<HTMLHeadingElement>(null);
   const prevIsPending = useRef(false);
 
-  // ✅ Initialize validation state
   const [errorState, formAction, isPending] = useActionState(validateForm, {
     errors: {},
   });
 
   useEffect(() => {
-    // Detect when submission completes (isPending flips from true to false)
+    // Detect when submission completes (isPending flips from true to false) and set focus to the heading
     if (prevIsPending.current && !isPending) {
-      // Only progress if there are no errors
       if (
         Object.keys(errorState.errors).length === 0 &&
         currentStep < totalSteps
       ) {
         setStep(currentStep + 1);
+        requestAnimationFrame(() => headingRef.current?.focus());
       }
     }
     prevIsPending.current = isPending;
   }, [isPending, errorState.errors, currentStep, totalSteps, setStep]);
-
-  useEffect(() => {
-    headingRef.current?.focus();
-  }, [currentStep]);
 
   return (
     <Form
       id={`step-form-${stepKey}`}
       action={formAction}
       validationErrors={errorState.errors}
+      className="w-full bg-white dark:bg-gray-900 sm:w-64 md:w-96 lg:w-128 xl:w-160"
     >
-      <h2
-        ref={headingRef}
-        tabIndex={-1}
-        className="text-2xl font-semibold focus-visible:outline-none"
-      >
-        {stepTitle}
-      </h2>
+      <div>
+        <h2
+          id="formHeading"
+          ref={headingRef}
+          tabIndex={-1}
+          aria-live="polite"
+          className="text-2xl font-semibold focus-visible:outline-none "
+        >
+          {stepTitle}
+        </h2>
+        <p className="text-sm text-gray-600 dark:text-gray-300 ">
+          Stap {currentStep} van {totalSteps}
+        </p>
+      </div>
 
       <input type="hidden" name="step" value={stepKey} />
 
       {children}
 
-      <div className="flex gap-2">
-        {currentStep > 1 && (
-          <Button onPress={() => setStep(currentStep - 1)}>Vorige</Button>
-        )}
-
-        {currentStep < totalSteps ? (
-          <Button type="submit" className="flex" isDisabled={isPending}>
-            {/* Spinner */}
-            {isPending && (
-              <svg
-                className="hidden motion-safe:block motion-safe:animate-spin h-5 w-5 mr-2"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
+      <nav aria-label="Vorige/Volgende stap" className="mt-6 min-w-0">
+        <ul className="flex gap-2 justify-end">
+          {currentStep > 1 && (
+            <li>
+              <Button
+                onPress={() => {
+                  setStep(currentStep - 1);
+                  requestAnimationFrame(() => headingRef.current?.focus());
+                }}
+                aria-label={`Ga naar de vorige stap, Stap ${
+                  currentStep - 1
+                } van ${totalSteps}`}
               >
-                <circle
-                  className="opacity-25"
-                  cx="12"
-                  cy="12"
-                  r="10"
-                  stroke="currentColor"
-                  strokeWidth="4"
-                />
-                <path
-                  className="opacity-75"
-                  fill="currentColor"
-                  d="M4 12a8 8 0 018-8v3.6a4.4 4.4 0 100 8.8V20a8 8 0 01-8-8z"
-                />
-              </svg>
-            )}
-            {isPending ? "Verwerken..." : "Volgende"}
-          </Button>
-        ) : (
-          <Button type="submit" isDisabled={isPending}>
-            {isPending ? "Verzenden..." : "Verzenden"}
-          </Button>
-        )}
-      </div>
+                Vorige
+              </Button>
+            </li>
+          )}
+
+          {currentStep < totalSteps ? (
+            <li>
+              <Button
+                type="submit"
+                className="flex"
+                isDisabled={isPending}
+                aria-label={
+                  currentStep < totalSteps
+                    ? `Ga naar de volgende stap, Stap ${
+                        currentStep + 1
+                      } van ${totalSteps}`
+                    : "Formulier verzenden"
+                }
+                aria-current={currentStep === totalSteps ? "step" : undefined}
+              >
+                {isPending && <Spinner className="mr-2" />}
+                {isPending ? "Verwerken..." : "Volgende"}
+              </Button>
+            </li>
+          ) : (
+            <li>
+              <Button type="submit" isDisabled={isPending}>
+                {isPending ? "Verzenden..." : "Verzenden"}
+              </Button>
+            </li>
+          )}
+        </ul>
+      </nav>
     </Form>
   );
 }
