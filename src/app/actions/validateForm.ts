@@ -24,7 +24,7 @@ export async function validateForm(prevState: FormState, formData: FormData) {
   const data = Object.fromEntries(formData.entries());
   const result = schema.safeParse(data);
 
-  await new Promise((resolve) => setTimeout(resolve, 1000));
+  await new Promise((resolve) => setTimeout(resolve, 5000));
 
   if (!result.success) {
     return {
