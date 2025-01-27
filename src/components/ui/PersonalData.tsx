@@ -26,6 +26,7 @@ export default function PersonalData() {
           inputMode="numeric"
           maxLength={4}
           pattern="[0-9]{4}"
+          description="Vul 4 cijfers in"
         />
       </FieldSet>
 

@@ -15,7 +15,7 @@ export default function Spinner({
 }) {
   return (
     <svg
-      className={`${speed} ${size} ${color} ${className}`}
+      className={`${speed} ${size} ${color} ${className} motion-reduce:hidden`}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
