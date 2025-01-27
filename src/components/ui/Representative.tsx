@@ -42,18 +42,18 @@ export default function Representative() {
   return (
     <div>
       {/* Question 2: Do you have a legal representative? */}
-      <FieldSet legend="Wettelijk Vertegenwoordiger">
-        <RadioGroup
-          label="Hebt u een of meer wettelijk vertegenwoordigers?"
-          name="hasRepresentative"
-          value={hasRepresentative}
-          onChange={setHasRepresentative}
-          isRequired
-        >
-          <Radio value="yes">Ja</Radio>
-          <Radio value="no">Nee</Radio>
-        </RadioGroup>
-      </FieldSet>
+      {/* <FieldSet legend="Wettelijk Vertegenwoordiger"> */}
+      <RadioGroup
+        label="Hebt u een of meer wettelijk vertegenwoordigers?"
+        name="hasRepresentative"
+        value={hasRepresentative}
+        onChange={setHasRepresentative}
+        isRequired
+      >
+        <Radio value="yes">Ja</Radio>
+        <Radio value="no">Nee</Radio>
+      </RadioGroup>
+      {/* </FieldSet> */}
 
       {/* Announcement for screen readers - Only when needed */}
       {/* {hasRepresentative === "yes" && (
