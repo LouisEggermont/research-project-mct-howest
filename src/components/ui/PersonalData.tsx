@@ -12,17 +12,17 @@ export default function PersonalData() {
   return (
     <div>
       <FieldSet legend="Naam">
-        <TextField label="Officiële Voornamen" name="firstName" />
-        <TextField label="Achternaam" name="lastName" />
+        <TextField label="Officiële Voornamen" name="firstName" isRequired />
+        <TextField label="Achternaam" name="lastName" isRequired />
       </FieldSet>
 
       <FieldSet legend="Adres">
-        <TextField label="Straat en Huisnummer" name="street" />
-        <TextField label="Plaats" name="city" />
+        <TextField label="Straat en Huisnummer" name="street" isRequired />
+        <TextField label="Plaats" name="city" isRequired />
         <TextField
           label="Postcode"
           name="postalCode"
-          description="Vul 4 cijfers in"
+          isRequired
           inputMode="numeric"
           maxLength={4}
           pattern="[0-9]{4}"
@@ -30,12 +30,25 @@ export default function PersonalData() {
       </FieldSet>
 
       <FieldSet legend="Contactgegevens">
-        <TextField label="Telefoon- of GSM-nummer" name="phone" type="tel" />
-        <TextField label="E-mailadres" name="email" type="email" />
+        <TextField
+          label="Telefoon- of GSM-nummer"
+          name="phone"
+          type="tel"
+          isRequired
+          description="Enkel cijfers, spaties en (+) zijn toegestaan"
+          pattern="^\+?[0-9\s\-]{7,15}$"
+        />
+        <TextField
+          label="E-mailadres"
+          name="email"
+          type="email"
+          isRequired
+          pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+        />
       </FieldSet>
 
       <FieldSet legend="Identificatie">
-        <DateField label="Geboortedatum" name="birthDate" />
+        <DateField label="Geboortedatum" name="birthDate" isRequired />
         {/* <Select
           label="Geslacht"
           name="gender"
@@ -77,6 +90,7 @@ export default function PersonalData() {
           mask="00.00.00-000.00"
           inputMode="numeric"
           description="Voer enkel de 11 cijfers van uw rijksregisternummer in "
+          isRequired
         />
         <TextField
           label="Dossiernummer (Optioneel)"
