@@ -3,6 +3,8 @@ import { z } from "zod";
 export const personalDataSchema = z.object({
   firstName: z.string().min(1, "Voornaam is verplicht."),
   lastName: z.string().min(1, "Achternaam is verplicht."),
+  street: z.string().min(1, "Straat en Huisnummer is verplicht."),
+  city: z.string().min(1, "Plaats is verplicht."),
 });
 
 export const representativeSchema = z.object({
