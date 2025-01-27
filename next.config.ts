@@ -8,13 +8,13 @@ const nextConfig: NextConfig = {
     ignoreDuringBuilds: true,
   },
   i18n: {
-    locales: ["nl"],
-    defaultLocale: "nl",
+    locales: ["nl", "fr"],
+    defaultLocale: "fr",
   },
   webpack(config) {
     config.plugins.push(
       optimizeLocales.webpack({
-        locales: ["nl"], // Define the locales you want to optimize
+        locales: ["nl", "fr"], // Define the locales you want to optimize
       })
     );
     return config;

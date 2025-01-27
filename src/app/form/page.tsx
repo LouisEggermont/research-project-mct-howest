@@ -25,7 +25,7 @@ export default function FormPage() {
               Subsidieaanvraagformulier
             </h2>
 
-            <I18nProvider locale="nl-BE">
+            <I18nProvider locale="nl">
               <MultiPageForm />
             </I18nProvider>
           </section>
