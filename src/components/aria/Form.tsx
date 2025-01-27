@@ -37,7 +37,8 @@ export function Form({ validationErrors, ...props }: FormProps) {
     <RACForm
       key={JSON.stringify(validationErrors)}
       {...props}
-      validationErrors={disableValidation ? {} : validationErrors}
+      // validationErrors={disableValidation ? {} : validationErrors}
+      validationErrors={validationErrors}
       className={twMerge("flex flex-col gap-4", props.className)}
       validationBehavior={disableValidation ? "aria" : "native"}
     />
