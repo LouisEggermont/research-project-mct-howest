@@ -20,7 +20,7 @@ export default function Home() {
 
       {/* CTA Button - Start Application */}
       <div className="mt-6">
-        <Link href="/form">
+        <Link href="/introduction">
           <button className="bg-govBlue-800 text-white px-6 py-3 rounded-md text-lg font-semibold shadow-md hover:bg-govBlue-900 transition">
             Start Uw Aanvraag
           </button>
